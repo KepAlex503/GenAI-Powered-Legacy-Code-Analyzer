@@ -12,6 +12,10 @@ import networkx as nx
 from dotenv import load_dotenv
 load_dotenv()
 
+# @todo add tests
+# @todo docker build more conviniant ?
+
+
 
 def main():
     parser = argparse.ArgumentParser(
