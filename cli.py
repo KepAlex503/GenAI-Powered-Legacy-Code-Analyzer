@@ -8,11 +8,10 @@ from llm.summarizer import Summarizer
 from report.generator import ReportGenerator
 import networkx as nx
 
-# @todo should be from env vars from the box ?
+# @should be from env vars from the box
 from dotenv import load_dotenv
 load_dotenv()
 
-# @todo add tests
 # @todo docker build more conviniant ?
 
 

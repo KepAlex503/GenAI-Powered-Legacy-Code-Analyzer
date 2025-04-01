@@ -13,9 +13,7 @@ class Summarizer:
         Returns list of {"method": str, "description": str}
         """
         summaries = []
-
-        # @todo several calls for every node is more precise, but too slow.
-        for node in graph_data["nodes"]:
+        for node in graph_data["nodes"]:  # hardcoded limit just for test
             method_id = node["id"]
             context = self._build_context(node, graph_data["edges"])
             prompt = self._build_prompt(method_id, context)
@@ -28,11 +26,11 @@ class Summarizer:
 
         return summaries
 
-    def _build_context(self, node: Dict, edges: List[Dict]) -> str:
+    @staticmethod
+    def _build_context(node: Dict, edges: List[Dict]) -> str:
         # Find methods this node calls
         calls = [e["to"] for e in edges if e["from"] == node["id"]]
 
-        # @todo maybe sould also pass where and who use this method ?
         context = f"""
                 Method: {node['id']}
                 Class: {node.get('class_name')}
@@ -43,7 +41,8 @@ class Summarizer:
                 """
         return context.strip()
 
-    def _build_prompt(self, method_id: str, context: str) -> str:
+    @staticmethod
+    def _build_prompt(method_id: str, context: str) -> str:
 
         return f"""Given the following Python method context, extract its purpose in one or two sentences. Always add who calls this method.
                 
