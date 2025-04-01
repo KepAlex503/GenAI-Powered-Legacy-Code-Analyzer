@@ -34,18 +34,18 @@ class Summarizer:
 
         # @todo maybe sould also pass where and who use this method ?
         context = f"""
-Method: {node['id']}
-Class: {node.get('class_name')}
-Arguments: {node['args']}
-Return Type: {node.get('return_type')}
-Source File: {node.get('file')}:{node.get('lineno')}
-Calls: {calls}
-"""
+                Method: {node['id']}
+                Class: {node.get('class_name')}
+                Arguments: {node['args']}
+                Return Type: {node.get('return_type')}
+                Source File: {node.get('file')}:{node.get('lineno')}
+                Calls: {calls}
+                """
         return context.strip()
 
     def _build_prompt(self, method_id: str, context: str) -> str:
 
-        return f"""Given the following Python method context, extract its purpose or business requirement in one or two sentences.
+        return f"""Given the following Python method context, extract its purpose in one or two sentences. Always add who calls this method.
                 
                 ### Context ###
                 {context}

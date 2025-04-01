@@ -38,11 +38,12 @@ class GraphBuilder:
 
         return self.graph
 
-    def _get_full_name(self, method: Dict[str, Any]) -> str:
+    @staticmethod
+    def _get_full_name(method: Dict[str, Any]) -> str:
         return f'{method["class_name"]}.{method["name"]}' if method["class_name"] else method["name"]
 
     def export_as_dict(self) -> Dict[str, Any]:
-        """Optional: export the graph as a dict for serialization or LLM input"""
+        """export the graph as a dict for serialization or LLM input"""
         return {
             "nodes": [
                 {"id": node, **self.graph.nodes[node]}
