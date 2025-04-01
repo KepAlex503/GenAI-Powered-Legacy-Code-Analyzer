@@ -11,7 +11,6 @@
 - Business logic summarization using OpenAI (via LangChain)
 - Markdown report with code references
 - GitHub-style links to source lines
-- Optional graph visualization using Matplotlib
 
 ---
 
