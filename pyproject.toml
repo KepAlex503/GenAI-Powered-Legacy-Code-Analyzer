@@ -3,6 +3,7 @@ name = "code-analyzer"
 version = "0.1.0"
 description = "AST-based code analyzer with LLM business logic summarization"
 authors = ["Alex Gryshyn"]
+packages = [{ include = "analyzer" }, { include = "llm" }, { include = "report" }]
 
 [tool.poetry.dependencies]
 python = "^3.9"
